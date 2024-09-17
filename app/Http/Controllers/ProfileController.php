@@ -12,6 +12,17 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
+
+    public function enrolled(string $id)
+    {
+        $user = auth()->user();
+
+        // Fetch the courses that the user is enrolled in
+        $courses = $user->courses;
+       
+        return view('home', compact('courses')); 
+    }
+
     /**
      * Display the user's profile form.
      */

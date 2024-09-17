@@ -22,8 +22,8 @@ class Course extends Model
     }
 
     // Relationship: A course can have many students
-    public function students()
+    public function users()
     {
-        return $this->belongsToMany(User::class, 'user_course');
+        return $this->belongsToMany(User::class, 'user_courses');
     }
 }

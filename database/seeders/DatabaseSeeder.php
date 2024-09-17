@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Seed 5 Teachers
-        User::factory()->count(5)->create([
-            'type' => 'teacher', // Set type to teacher
+        $teachers = User::factory()->count(5)->create([
+            'type' => 'teacher', // Set type to student
         ]);
 
         // Seed 50 Students
@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
 
         // Seed 5 Courses
       
-
         // Update course values
         Course::insert([
             ['name' => 'Web Application Development', 'code' => '2703ICT', 'description' => 'This course presents a systematic introduction to the development of dynamic, community-based, Web applications through the integration of HTML/CSS'],
@@ -48,9 +47,20 @@ class DatabaseSeeder extends Seeder
             ['title' => 'Assignment5', 'instructions' => 'Basically you gotta finish the assignment', 'due_date' => '2024-09-21 14:00:00', 'type' => 'teacher-assign', 'course_id' => 5],
         ]);
 
+        // Put each teacher in random courses
+        foreach ($teachers as $teacher) {
+            $randomCourses = $courses->random(rand(1, 2)); 
+            foreach ($randomCourses as $course) {
+                DB::table('user_courses')->insert([
+                    'user_id' => $teacher->id,
+                    'course_id' => $course->id,
+                ]);
+            }
+        }
+
         // Enroll each student in random courses
         foreach ($students as $student) {
-            $randomCourses = $courses->random(rand(1, 3)); // Each student is enrolled in 1 to 3 random courses
+            $randomCourses = $courses->random(rand(1, 3)); 
             foreach ($randomCourses as $course) {
                 DB::table('user_courses')->insert([
                     'user_id' => $student->id,

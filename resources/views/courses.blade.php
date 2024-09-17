@@ -9,14 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div>{{ __("Courses") }}</div>
+                    <div>{{ __("Course Selection") }}</div>
                 </div>
 
                 <div class="grid grid-cols-3 gap-12 p-6 text-gray-900 dark:text-gray-100">
                     @foreach($courses as $course)
                     <div class="flex flex-col rounded-md shadow-md p-4 gap-4">
                         <div class="">
-                            <h1 class="text-base font-semibold text-zinc-700">{{$course -> name}}</h1>
+                            <a href="{{ url('/courses/' . $course->code)}}"><h1 class="text-base font-semibold text-zinc-700">{{$course -> name}}</h1></a>
                             <p class="text-xs font-medium text-zinc-400">{{$course -> code}}</p>
                         </div>
                         <div>
