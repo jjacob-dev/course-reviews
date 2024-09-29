@@ -9,20 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Course;
 
 class ProfileController extends Controller
 {
-
-    public function enrolled(string $id)
-    {
-        $user = auth()->user();
-
-        // Fetch the courses that the user is enrolled in
-        $courses = $user->courses;
-       
-        return view('home', compact('courses')); 
-    }
-
     /**
      * Display the user's profile form.
      */

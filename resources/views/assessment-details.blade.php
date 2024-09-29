@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex w-full justify-center h-80 bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ asset('images/banner.jpg') }}');">
-        <div class="w-1/2 flex flex-col justify-end text-white font-bold text-4xl brightness-100 uppercase"><h1 class="pb-12">{{$course -> name}}</h1></div>
+        <div class="w-1/2 flex flex-col justify-end text-white font-bold text-4xl brightness-100 uppercase"><h1 class="pb-12"></h1></div>
     </div>
 
     <div class="py-12">
@@ -16,9 +16,6 @@
                                     </div>
                                     <div>
                                         <h1 class="text-lg font-semibold">TEACHERS</h1>
-                                        @foreach($teachers as $teacher)
-                                            <p>{{$teacher -> name}}</p>
-                                        @endforeach
                                     </div>  
                                 </div>
                                 <div class="flex gap-2 flex-grow">
@@ -27,7 +24,6 @@
                                     </div>                                 
                                     <div>
                                         <h1 class="text-lg font-semibold">COURSE CODE</h1>
-                                        <p>{{$course -> code}}</p>
                                     </div>  
                                 </div>
                             </div>
@@ -59,9 +55,7 @@
                                 </div>
                                 <div>
                                     <h1 class="text-lg font-semibold">ASSESSMENTS</h1>
-                                    @foreach($assessments as $assessment)
-                                        <p>{{$assessment -> title}}</p>
-                                    @endforeach
+        
                                 </div>
                             </div>      
                         </div>
@@ -71,26 +65,11 @@
 
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-3xl font-bold">About this course</h1>
-                    <p>{{$course -> description}}</p>
                 </div>
 
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h1 class="text-3xl font-bold">Assessments</h1>
+                    <h1 class="text-3xl font-bold">Assessments</h1>                
                 </div>
-
-                <div class="grid grid-cols-3 gap-12 p-6 text-gray-900 dark:text-gray-100">
-                    @foreach($assessments as $assessment)
-                    <div class="flex flex-col rounded-md shadow-md p-4 gap-4">
-                        <div class="">
-                            <a href="{{ url('/assessment/' . $assessment->id)}}"><h1 class="text-base font-semibold text-zinc-700">{{$assessment -> title}}</h1></a>
-                        </div>
-                        <div>
-                            {{$assessment -> instructions}}
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-
             </div>
         </div>
     </div>
